@@ -7,7 +7,7 @@ body {
 .terminal {
   width: 100%;
   color: #e5e5e5;
-  font-family: diatype mono bold;
+  font-family: monospace;
 }
 
 .header {
