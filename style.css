@@ -59,3 +59,10 @@ body {
 .upcoming {
   opacity: 0.85;
 }
+
+@media (max-width: 768px) .terminal {
+  max-width: 75%;
+  color: white;
+  font-family: monospace;
+  font-size: 1rem;
+}
