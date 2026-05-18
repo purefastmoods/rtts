@@ -69,7 +69,7 @@ function render() {
             <div>${set.room}</div>
             <div>${formatTime(set.start)}</div>
             <div>${formatTime(set.end)}</div>
-            <div>
+            <div id="status-row">
               ${
                 status === "live"
                   ? "◉ LIVE"
