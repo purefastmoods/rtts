@@ -54,7 +54,7 @@ function render() {
         <div>ROOM</div>
         <div>START</div>
         <div>END</div>
-        <div>STATUS</div>
+        <div id="status">STATUS</div>
       </div>
 
       ${sets.map(set => {
