@@ -62,9 +62,9 @@ body {
 
 @media (max-width: 768px) {
   .terminal {
-    max-width: 100%;
+    max-width: 90%;
     color: white;
     font-family: monospace;
-    font-size: .75rem;
+    font-size: .7rem;
   }
 }
