@@ -68,3 +68,9 @@ body {
     font-size: .75rem;
   }
 }
+
+@media (max-width: 768px) {
+  #status {
+    display: none !important;
+  }
+}
