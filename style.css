@@ -4,7 +4,7 @@ body {
   padding: 0;
 
   background: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
 
   font-family: "program", sans-serif;
   font-style: italic;
@@ -110,6 +110,36 @@ body {
 
 .party {
   opacity: 0.6;
+}
+
+.party-header {
+  position: sticky;
+  top: 0;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+
+  padding-top: 18px;
+  padding-bottom: 18px;
+
+  margin-bottom: 18px;
+
+  background: #050505;
+
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+
+  font-size: 2.5rem;
+
+  font-weight: 700;
+
+  letter-spacing: -0.04em;
+
+  line-height: 0.95;
+
+  opacity: 1;
 }
 
 /* =========================
