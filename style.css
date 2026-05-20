@@ -4,17 +4,14 @@ body {
   padding: 0;
 
   background: #000000;
-
-  color: #ffffff;
+  color: #FFFFFF;
 
   font-family: "program", sans-serif;
-
   font-style: italic;
 
   text-transform: uppercase;
 
   -webkit-font-smoothing: antialiased;
-
   text-rendering: optimizeLegibility;
 }
 
@@ -31,21 +28,23 @@ body {
   width: 100%;
 }
 
-/* ---------- HEADER ---------- */
+/* =========================
+   HEADER ROW
+========================= */
 
 .header-row {
   display: grid;
 
   grid-template-columns:
-    1fr
-    1fr
-    2fr
+    0.8fr
+    3fr
+    1.2fr
     1fr;
 
   gap: 24px;
 
   padding-bottom: 12px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 
   border-bottom: 1px solid #333;
 
@@ -56,7 +55,9 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* ---------- SET ROWS ---------- */
+/* =========================
+   DATA ROWS
+========================= */
 
 .set {
   padding-top: 18px;
@@ -69,9 +70,9 @@ body {
   display: grid;
 
   grid-template-columns:
-    1fr
-    1fr
-    2fr
+    0.8fr
+    3fr
+    1.2fr
     1fr;
 
   gap: 24px;
@@ -81,28 +82,39 @@ body {
   width: 100%;
 }
 
-/* ---------- COLUMN STYLES ---------- */
+/* =========================
+   COLUMNS
+========================= */
 
-.room,
-.party,
+.time,
 .artist,
-.time {
+.room,
+.party {
   font-size: 1.25rem;
-
   line-height: 1.1;
-
-  text-align: left;
-}
-
-.artist {
-  font-weight: 600;
 }
 
 .time {
   white-space: nowrap;
+  opacity: 0.85;
 }
 
-/* ---------- STATUS STATES ---------- */
+.artist {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.room {
+  opacity: 0.75;
+}
+
+.party {
+  opacity: 0.6;
+}
+
+/* =========================
+   STATUS STATES
+========================= */
 
 .live {
   opacity: 1;
@@ -124,7 +136,9 @@ body {
   opacity: 0.85;
 }
 
-/* ---------- MOBILE ---------- */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 768px) {
 
@@ -135,28 +149,27 @@ body {
   .header-row,
   .line {
     grid-template-columns:
+      0.9fr
+      2.6fr
       1fr
-      1fr
-      1.5fr
-      auto;
+      0.9fr;
 
-    gap: 12px;
+    gap: 14px;
   }
 
   .header-row {
-    font-size: 1rem;
+    font-size: .75rem;
   }
 
-  .room,
-  .party,
+  .time,
   .artist,
-  .time {
-    font-size: 1rem;
+  .room,
+  .party {
+    font-size: .75rem;
   }
 
   .set {
     padding-top: 16px;
     padding-bottom: 16px;
   }
-
 }
