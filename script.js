@@ -43,41 +43,33 @@ function render() {
   container.innerHTML = `
     <div class="terminal">
 
-      <!--<div class="header">
-        LIVE TRANSMISSION
-      </div>-->
-
-      <div class="table-header row">
-        <div>DATE</div>
-        <div>PARTY</div>
-        <div>ARTIST</div>
-        <div>ROOM</div>
-        <div>START</div>
-        <div>END</div>
-        <div id="status">STATUS</div>
-      </div>
-
       ${sets.map(set => {
 
         const status = getStatus(set, now);
 
         return `
-          <div class="row ${status}">
-            <div>${formatDate(set.eventDate)}</div>
-            <div>${set.party}</div>
-            <div>${set.artist}</div>
-            <div>${set.room}</div>
-            <div>${formatTime(set.start)}</div>
-            <div>${formatTime(set.end)}</div>
-            <div id="status-row">
-              ${
-                status === "live"
-                  ? "◉ LIVE"
-                  : status === "done"
-                  ? "✓ DONE"
-                  : "○ UPCOMING"
-              }
+          <div class="set ${status}">
+
+            <div class="line">
+
+              <div class="party">
+                ${set.party}
+              </div>
+
+              <div class="room">
+                ${set.room}
+              </div>
+
+              <div class="artist">
+                ${set.artist}
+              </div>
+
+              <div class="time">
+                ${formatTime(set.start)}
+              </div>
+
             </div>
+
           </div>
         `;
       }).join("")}
