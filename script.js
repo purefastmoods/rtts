@@ -86,6 +86,6 @@ function render() {
 }
 
 setInterval(render, 1000);
-setInterval(fetchData, 30000);
+setInterval(fetchData, 300000);
 
 fetchData();
