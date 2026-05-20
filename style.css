@@ -155,3 +155,40 @@ body {
   }
 
 }
+
+.header-row {
+  display: flex;
+
+  gap: 18px;
+
+  padding-bottom: 10px;
+  margin-bottom: 6px;
+
+  border-bottom: 1px solid #333;
+
+  font-size: 11px;
+
+  letter-spacing: 0.08em;
+
+  opacity: 0.5;
+
+  text-transform: uppercase;
+}
+
+.header-row div:nth-child(1) {
+  min-width: 100px;
+}
+
+.header-row div:nth-child(2) {
+  min-width: 140px;
+}
+
+.header-row div:nth-child(3) {
+  flex: 1;
+}
+
+.header-row div:nth-child(4) {
+  width: 70px;
+
+  text-align: right;
+}
