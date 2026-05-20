@@ -36,49 +36,80 @@ function formatDate(dateString) {
 }
 
 function render() {
+
   const now = new Date();
 
   const container = document.getElementById("ascension-terminal");
 
+  /* GROUP SETS BY PARTY */
+
+  const grouped = {};
+
+  sets.forEach(set => {
+
+    const cleanParty = set.party.trim();
+
+if (!grouped[cleanParty]) {
+  grouped[cleanParty] = [];
+}
+
+grouped[cleanParty].push(set);
+
+  });
+
   container.innerHTML = `
     <div class="terminal">
 
-      <div class="header-row">
-        <div>START</div>
-        <div>ARTIST</div>
-        <div>ROOM</div>
-        <div>EVENT</div>
-      </div>
-
-      ${sets.map(set => {
-
-        const status = getStatus(set, now);
+      ${Object.entries(grouped).map(([party, partySets]) => {
 
         return `
-          <div class="set ${status}">
 
-            <div class="line">
+          <div class="party-section">
 
-              <div class="time">
-                ${formatTime(set.start)}
-              </div>
-
-              <div class="artist">
-                ${set.artist}
-              </div>
-
-              <div class="room">
-                ${set.room}
-              </div>
-
-              <div class="party">
-                ${set.party}
-              </div>
-
+            <div class="party-header">
+              ${party}
             </div>
 
+            <div class="header-row">
+              <div>START</div>
+              <div>ARTIST</div>
+              <div>ROOM</div>
+            </div>
+
+            ${partySets.map(set => {
+
+              const status = getStatus(set, now);
+
+              return `
+
+                <div class="set ${status}">
+
+                  <div class="line">
+
+                    <div class="time">
+                      ${formatTime(set.start)}
+                    </div>
+
+                    <div class="artist">
+                      ${set.artist}
+                    </div>
+
+                    <div class="room">
+                      ${set.room}
+                    </div>
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }).join("")}
+
           </div>
+
         `;
+
       }).join("")}
 
     </div>
@@ -86,6 +117,6 @@ function render() {
 }
 
 setInterval(render, 1000);
-setInterval(fetchData, 300000);
+setInterval(fetchData, 30000);
 
 fetchData();
