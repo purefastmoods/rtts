@@ -51,13 +51,13 @@ function render() {
           <div class="set ${status}">
 
             <div class="line">
-
-              <div class="party">
-                ${set.party}
-              </div>
-
+            
               <div class="room">
                 ${set.room}
+              </div>
+              
+              <div class="party">
+                ${set.party}
               </div>
 
               <div class="artist">
