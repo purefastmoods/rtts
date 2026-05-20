@@ -187,6 +187,8 @@ body {
     padding-bottom: 14px;
 
     margin-bottom: 14px;
+
+    line-height: 0.95;
   }
 
   /* =========================
@@ -199,13 +201,13 @@ body {
     display: grid;
 
     grid-template-columns:
-      72px   /* time */
-      minmax(0, 1fr) /* artist */
-      82px;  /* room */
+      72px
+      minmax(0, 2fr)
+      minmax(70px, 1fr);
 
     gap: 12px;
 
-    align-items: center;
+    align-items: start;
 
     width: 100%;
   }
@@ -216,6 +218,8 @@ body {
 
   .header-row {
     font-size: 1rem;
+
+    line-height: 1.1;
   }
 
   .time,
@@ -223,7 +227,11 @@ body {
   .room {
     font-size: 1rem;
 
-    line-height: 1.1;
+    line-height: 1.15;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
   }
 
   /* =========================
@@ -231,25 +239,15 @@ body {
   ========================= */
 
   .time {
-    white-space: nowrap;
-
-    text-align: left;
+    white-space: normal;
   }
 
   .artist {
     min-width: 0;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
   }
 
   .room {
-    text-align: left;
-
-    white-space: nowrap;
+    min-width: 0;
   }
 
   /* =========================
