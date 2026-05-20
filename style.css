@@ -158,14 +158,14 @@ body {
   }
 
   .header-row {
-    font-size: .75rem;
+    font-size: 1rem;
   }
 
   .time,
   .artist,
   .room,
   .party {
-    font-size: .75rem;
+    font-size: 1rem;
   }
 
   .set {
