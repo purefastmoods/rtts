@@ -5,7 +5,7 @@ body {
 
   background: #000000;
 
-  color: #ffffff;
+  color: #FFFFFF;
 
   font-family: "Program", sans-serif;
   font-style: italic;
@@ -33,13 +33,13 @@ body {
 .set {
   padding-top: 14px;
   padding-bottom: 14px;
-  opacity: 1;
+
   border-bottom: 1px solid #222;
 }
 
 .line {
   display: flex;
-  opacity: .5;
+
   align-items: center;
 
   gap: 18px;
@@ -49,7 +49,7 @@ body {
 
 .party {
   font-size: 12px;
-  opacity: 1;
+
   text-transform: uppercase;
 
   letter-spacing: 0.08em;
@@ -59,7 +59,7 @@ body {
 
 .room {
   font-size: 12px;
-  opacity: 1;
+
   min-width: 100px;
 }
 
@@ -69,8 +69,7 @@ body {
   font-size: 18px;
 
   font-weight: 600;
-  opacity: 1;
-  
+
   letter-spacing: -0.02em;
 }
 
