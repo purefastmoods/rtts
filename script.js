@@ -43,6 +43,13 @@ function render() {
   container.innerHTML = `
     <div class="terminal">
 
+      <div class="header-row">
+        <div>ROOM</div>
+        <div>PARTY</div>
+        <div>ARTIST</div>
+        <div>START</div>
+      </div>
+
       ${sets.map(set => {
 
         const status = getStatus(set, now);
@@ -51,11 +58,11 @@ function render() {
           <div class="set ${status}">
 
             <div class="line">
-            
+
               <div class="room">
                 ${set.room}
               </div>
-              
+
               <div class="party">
                 ${set.party}
               </div>
