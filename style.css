@@ -176,16 +176,43 @@ body {
     padding: 14px;
   }
 
+  /* =========================
+     PARTY HEADERS
+  ========================= */
+
+  .party-header {
+    font-size: 1.75rem;
+
+    padding-top: 14px;
+    padding-bottom: 14px;
+
+    margin-bottom: 14px;
+  }
+
+  /* =========================
+     MOBILE GRID
+  ========================= */
+
   .header-row,
   .line {
-    grid-template-columns:
-      0.9fr
-      2.6fr
-      1fr
-      0.9fr;
 
-    gap: 14px;
+    display: grid;
+
+    grid-template-columns:
+      72px   /* time */
+      minmax(0, 1fr) /* artist */
+      82px;  /* room */
+
+    gap: 12px;
+
+    align-items: center;
+
+    width: 100%;
   }
+
+  /* =========================
+     TYPE
+  ========================= */
 
   .header-row {
     font-size: 1rem;
@@ -193,13 +220,45 @@ body {
 
   .time,
   .artist,
-  .room,
-  .party {
+  .room {
     font-size: 1rem;
+
+    line-height: 1.1;
   }
+
+  /* =========================
+     COLUMN BEHAVIOR
+  ========================= */
+
+  .time {
+    white-space: nowrap;
+
+    text-align: left;
+  }
+
+  .artist {
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+  .room {
+    text-align: left;
+
+    white-space: nowrap;
+  }
+
+  /* =========================
+     ROW SPACING
+  ========================= */
 
   .set {
     padding-top: 16px;
     padding-bottom: 16px;
   }
+
 }
