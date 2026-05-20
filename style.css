@@ -1,58 +1,103 @@
+html,
 body {
-  background: #050505;
   margin: 0;
+  padding: 0;
+
+  background: #050505;
+
+  color: #e5e5e5;
+
+  font-family: "Program", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  -webkit-font-smoothing: antialiased;
+
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+body {
   padding: 20px;
 }
 
 .terminal {
   width: 100%;
-  color: white;
-  font-family: monospace;
-  font-size: 1rem;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-  opacity: 0.6;
-  letter-spacing: 2px;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 
-    1fr 
-    1.5fr 
-    1.5fr 
-    1fr 
-    1fr 
-    1fr 
-    1fr;
-
-  gap: 12px;
-
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 8px;
-  padding-right: 8px;
+.set {
+  padding-top: 14px;
+  padding-bottom: 14px;
 
   border-bottom: 1px solid #222;
-
-  align-items: center;
 }
 
-.table-header {
-  font-weight: bold;
-  border-bottom: 1px solid #555;
+.line {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  width: 100%;
+}
+
+.party {
+  font-size: 12px;
+
+  text-transform: uppercase;
+
+  opacity: 0.5;
+
+  letter-spacing: 0.08em;
+
+  min-width: 140px;
+}
+
+.room {
+  font-size: 12px;
+
+  opacity: 0.45;
+
+  min-width: 100px;
+}
+
+.artist {
+  flex: 1;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+}
+
+.time {
+  font-size: 14px;
+
+  opacity: 0.7;
+
+  white-space: nowrap;
 }
 
 .live {
-  font-weight: bold;
-  background: rgba(255,255,255,0.05);
+  opacity: 1;
+}
+
+.live .artist {
+  font-weight: 700;
 }
 
 .done {
-  opacity: 0.35;
+  opacity: 0.3;
+}
+
+.done .artist {
   text-decoration: line-through;
 }
 
@@ -60,23 +105,59 @@ body {
   opacity: 0.85;
 }
 
-@media (max-width: 768px) {
-  .terminal {
-    max-width: 100%;
-    color: white;
-    font-family: monospace;
-    font-size: .75rem;
-  }
-}
+/* ---------------- MOBILE ---------------- */
 
 @media (max-width: 768px) {
-  #status {
-    display: none !important;
-  }
-}
 
-@media (max-width: 768px) {
-  #status-row {
-    display: none !important;
+  body {
+    padding: 14px;
   }
+
+  .line {
+    display: grid;
+
+    grid-template-columns:
+      1fr auto;
+
+    grid-template-areas:
+      "artist time"
+      "meta meta";
+
+    row-gap: 6px;
+  }
+
+  .artist {
+    grid-area: artist;
+
+    font-size: 17px;
+  }
+
+  .time {
+    grid-area: time;
+
+    font-size: 13px;
+
+    text-align: right;
+  }
+
+  .party,
+  .room {
+    min-width: unset;
+
+    font-size: 11px;
+  }
+
+  .party::after {
+    content: " · ";
+  }
+
+  .party,
+  .room {
+    display: inline;
+  }
+
+  .party {
+    grid-area: meta;
+  }
+
 }
