@@ -2,58 +2,105 @@ const SHEET_URL = "https://opensheet.elk.sh/18-BGDh4RSMRS-4sqh41xZzhWZWtqCdE-qde
 
 let sets = [];
 
+/* =========================
+   FETCH DATA
+========================= */
+
 async function fetchData() {
-  const res = await fetch(SHEET_URL);
-  const data = await res.json();
 
-  sets = data.map(row => ({
-    eventDate: row.event_date,
-    party: row.party,
-    artist: row.artist,
-    room: row.room,
-    start: new Date(row.start),
-    end: new Date(row.end)
-  }));
+  try {
 
-  render();
+    const response = await fetch(SHEET_URL);
+
+    const data = await response.json();
+
+    sets = data.map(item => ({
+      party: item.party?.trim() || "",
+      room: item.room?.trim() || "",
+      artist: item.artist?.trim() || "",
+      start: item.start,
+      end: item.end
+    }));
+
+    /* SORT BY START TIME */
+
+    sets.sort((a, b) => {
+      return new Date(a.start) - new Date(b.start);
+    });
+
+    render();
+
+  } catch (error) {
+
+    console.error("ERROR LOADING SHEET:", error);
+
+  }
+
 }
 
-function getStatus(set, now) {
-  if (now >= set.start && now <= set.end) return "live";
-  if (now > set.end) return "done";
-  return "upcoming";
-}
+/* =========================
+   FORMAT TIME
+========================= */
 
-function formatTime(date) {
+function formatTime(dateString) {
+
+  const date = new Date(dateString);
+
   return date.toLocaleTimeString([], {
-    hour: "2-digit",
+    hour: "numeric",
     minute: "2-digit"
   });
+
 }
 
-function formatDate(dateString) {
-  return dateString;
-}
+/* =========================
+   STATUS
+========================= */
 
-function render() {
+function getStatus(set) {
 
   const now = new Date();
 
+  const start = new Date(set.start);
+  const end = new Date(set.end);
+
+  const nowTime = now.getTime();
+  const startTime = start.getTime();
+  const endTime = end.getTime();
+
+  if (nowTime >= startTime && nowTime < endTime) {
+    return "live";
+  }
+
+  if (nowTime >= endTime) {
+    return "done";
+  }
+
+  return "upcoming";
+
+}
+
+/* =========================
+   RENDER
+========================= */
+
+function render() {
+
   const container = document.getElementById("ascension-terminal");
 
-  /* GROUP SETS BY PARTY */
+  /* GROUP BY PARTY */
 
   const grouped = {};
 
   sets.forEach(set => {
 
-    const cleanParty = set.party.trim();
+    const cleanParty = set.party.trim().toUpperCase();
 
-if (!grouped[cleanParty]) {
-  grouped[cleanParty] = [];
-}
+    if (!grouped[cleanParty]) {
+      grouped[cleanParty] = [];
+    }
 
-grouped[cleanParty].push(set);
+    grouped[cleanParty].push(set);
 
   });
 
@@ -78,7 +125,7 @@ grouped[cleanParty].push(set);
 
             ${partySets.map(set => {
 
-              const status = getStatus(set, now);
+              const status = getStatus(set);
 
               return `
 
@@ -114,9 +161,24 @@ grouped[cleanParty].push(set);
 
     </div>
   `;
+
 }
 
-setInterval(render, 1000);
-setInterval(fetchData, 30000);
+/* =========================
+   INITIAL LOAD
+========================= */
 
 fetchData();
+
+/* =========================
+   AUTO REFRESH
+========================= */
+
+setInterval(fetchData, 60000);
+
+console.log(
+  set.artist,
+  "START:", new Date(set.start).toString(),
+  "END:", new Date(set.end).toString(),
+  "STATUS:", getStatus(set)
+);
