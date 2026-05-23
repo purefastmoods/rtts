@@ -3,8 +3,8 @@ body {
   margin: 0;
   padding: 0;
 
-  background: #000000;
-  color: #ffffff;
+  background: #050505;
+  color: #e5e5e5;
 
   font-family: "program", sans-serif;
   font-style: italic;
@@ -29,104 +29,30 @@ body {
 }
 
 /* =========================
-   HEADER ROW
+   PARTY SECTION
 ========================= */
 
-.header-row {
-  display: grid;
-
-  grid-template-columns:
-    0.8fr
-    3fr
-    1.2fr
-    1fr;
-
-  gap: 24px;
-
-  padding-bottom: 12px;
-  margin-bottom: 6px;
-
-  border-bottom: 1px solid #333;
-
-  opacity: 0.45;
-
-  font-size: 1.25rem;
-
-  letter-spacing: 0.04em;
+.party-section {
+  margin-bottom: 56px;
 }
 
 /* =========================
-   DATA ROWS
+   PARTY HEADER
 ========================= */
-
-.set {
-  padding-top: 18px;
-  padding-bottom: 18px;
-
-  border-bottom: 1px solid #222;
-}
-
-.line {
-  display: grid;
-
-  grid-template-columns:
-    0.8fr
-    3fr
-    1.2fr
-    1fr;
-
-  gap: 24px;
-
-  align-items: center;
-
-  width: 100%;
-}
-
-/* =========================
-   COLUMNS
-========================= */
-
-.time,
-.artist,
-.room,
-.party {
-  font-size: 1.25rem;
-  line-height: 1.1;
-}
-
-.time {
-  white-space: nowrap;
-  opacity: 0.85;
-}
-
-.artist {
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.room {
-  opacity: 0.75;
-}
-
-.party {
-  opacity: 0.6;
-}
 
 .party-header {
+
   position: sticky;
   top: 0;
 
-  z-index: 10;
+  z-index: 20;
 
-  display: flex;
-  align-items: center;
+  background: #050505;
 
   padding-top: 18px;
   padding-bottom: 18px;
 
   margin-bottom: 18px;
-
-  background: #050505;
 
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;
@@ -139,30 +65,117 @@ body {
 
   line-height: 0.95;
 
-  opacity: 1;
+  text-shadow: 0 0 12px rgba(255,255,255,0.08);
 }
 
 /* =========================
-   STATUS STATES
+   HEADER ROW
 ========================= */
 
-.live {
-  opacity: 1;
+.header-row {
+
+  display: grid;
+
+  grid-template-columns:
+    80px
+    minmax(0, 2fr)
+    minmax(80px, 1fr);
+
+  gap: 24px;
+
+  padding-bottom: 12px;
+
+  border-bottom: 1px solid #333;
+
+  opacity: 0.45;
+
+  font-size: 1.25rem;
+
+  letter-spacing: 0.04em;
 }
 
-.live .artist {
-  font-weight: 700;
+/* =========================
+   SET ROWS
+========================= */
+
+.set {
+
+  padding-top: 18px;
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #222;
 }
 
-.done {
-  opacity: 0.3;
+/* =========================
+   GRID
+========================= */
+
+.line {
+
+  display: grid;
+
+  grid-template-columns:
+    80px
+    minmax(0, 2fr)
+    minmax(80px, 1fr);
+
+  gap: 24px;
+
+  align-items: start;
+
+  width: 100%;
 }
 
-.done .artist {
+/* =========================
+   TYPE
+========================= */
+
+.time,
+.artist,
+.room {
+
+  font-size: 1.25rem;
+
+  line-height: 1.1;
+
+  overflow-wrap: anywhere;
+
+  word-break: break-word;
+}
+
+.time {
+  opacity: 0.85;
+}
+
+.artist {
+
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+}
+
+.room {
+  opacity: 0.75;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.set.live .artist,
+.set.done .artist {
   text-decoration: line-through;
 }
 
-.upcoming {
+.set.done {
+  opacity: 0.35;
+}
+
+.set.live {
+  opacity: 1;
+}
+
+.set.upcoming {
   opacity: 0.85;
 }
 
@@ -176,29 +189,22 @@ body {
     padding: 14px;
   }
 
-  /* =========================
-     PARTY HEADERS
-  ========================= */
+  /* PARTY HEADERS */
 
   .party-header {
+
     font-size: 1.75rem;
 
     padding-top: 14px;
     padding-bottom: 14px;
 
     margin-bottom: 14px;
-
-    line-height: 0.95;
   }
 
-  /* =========================
-     MOBILE GRID
-  ========================= */
+  /* GRID */
 
   .header-row,
   .line {
-
-    display: grid;
 
     grid-template-columns:
       72px
@@ -206,55 +212,27 @@ body {
       minmax(70px, 1fr);
 
     gap: 12px;
-
-    align-items: start;
-
-    width: 100%;
   }
 
-  /* =========================
-     TYPE
-  ========================= */
+  /* TYPE */
 
   .header-row {
     font-size: 1rem;
-
-    line-height: 1.1;
   }
 
   .time,
   .artist,
   .room {
+
     font-size: 1rem;
 
     line-height: 1.15;
-
-    overflow-wrap: anywhere;
-
-    word-break: break-word;
   }
 
-  /* =========================
-     COLUMN BEHAVIOR
-  ========================= */
-
-  .time {
-    white-space: normal;
-  }
-
-  .artist {
-    min-width: 0;
-  }
-
-  .room {
-    min-width: 0;
-  }
-
-  /* =========================
-     ROW SPACING
-  ========================= */
+  /* SPACING */
 
   .set {
+
     padding-top: 16px;
     padding-bottom: 16px;
   }
